@@ -9,7 +9,7 @@ todoButton.addEventListener('click', addTodo);
 //Functions
 function addTodo(event) {
     event.preventDefault();
-    //Todo Div
+    
     const todoDiv = document.createElement('div');
     todoDiv.classList.add("todo");
     //Create Li
