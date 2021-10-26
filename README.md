@@ -79,7 +79,7 @@
   
   #### (4) LocalStorage 활용
   
-  크롬 개발자 도구의 LocalStorage를 활용하여 todoList의 데이터를 저장하고 HTML DOM이 초기화 되었을 때 저장된 localStorage의 value를 렌더링해주었다.
+  크롬 개발자 도구의 LocalStorage를 활용하여 todoList의 데이터를 저장하고 HTML DOM이 초기화 되었을 때 저장된 LocalStorage의 value를 렌더링해주었다.
   
   ```function saveLocalTodos(todo) {
     //todo가 이미 list에 존재하는가?
