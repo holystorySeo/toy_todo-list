@@ -8,15 +8,13 @@
   1. todo 항목 추가, 삭제
   2. todo check 기능(text-decoration: line-through, fall down)
   3. filter - All, completed, uncompleted
-  4. 크롬 개발자 도구 localstorgae 활용한 todo list 저장, 삭제
-
-
+  4. 크롬 개발자 도구 Localstorgae 활용한 todo list 저장, 삭제
 
 ## highlight codes
   
-1. JS
+### 1. JS
   
-  (1) ele.classList.toggle
+  #### (1) ele.classList.toggle
   
   일반적으로 ele.classList.add 가 가장 많이 사용
   이번에 사용된 것은 toggle이다.
@@ -33,7 +31,7 @@
     }
   ```
   
-  (2) 조건문 switch case
+  #### (2) 조건문 switch case
   
   if 대신 깔끔한 switch case 문을 사용하였다. todos에 todoList의 자식 노드를 넣어주고 그 자식 노드의 값에 따라 CSS 설정을 바꾸어 준 것이다.
   
@@ -61,9 +59,10 @@
         }
     });
   ```
-  (3) classList에 있는 인덱스로 요소 선택하기
+  #### (3) classList에 있는 인덱스로 요소 선택하기
   
-  이벤트 리스너에 의해 전달된 이벤트 객체 e의 classList의 0번째 인덱스는 className이다. 아래 코드에서는 classList[0]을 통해 className 'trash-btn'을 
+  이벤트 리스너에 의해 전달된 이벤트 객체 e의 classList의 0번째 인덱스는 className이다. 아래 코드에서는 classList[0]을 통해 className 'trash-btn'을 불러왔다.
+  
   ```function deleteCheck(e) {
     const item = e.target;
     //DELETE TODO
@@ -76,4 +75,57 @@
             todo.remove();
         })
     }
+  ```
+  
+  #### (4) LocalStorage 활용
+  
+  크롬 개발자 도구의 LocalStorage를 활용하여 todoList의 데이터를 저장하고 HTML DOM이 초기화 되었을 때 저장된 localStorage의 value를 렌더링해주었다.
+  
+  ```function saveLocalTodos(todo) {
+    //todo가 이미 list에 존재하는가?
+    let todos;
+    if(localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  ```
+  
+  #### (5) 이벤트 리스너 DOMContentLoaded
+  
+  HTML 문서의 생명 주기는 3가지 이벤트가 관여한다. DOMContentLoaded, load, beforeunload/unload.
+  그중 DOMContentLoaded는  브라우저가 HTML을 모두 읽고 DOM 트리를 완성하는 즉시 발생한다.
+  아래의 코드는 HTML 문서 초기에 getTodos를 읽어와서 Local Storage에 저장된 todo를 화면에 뿌려준다.
+  
+  ```//Event Listeners
+     document.addEventListener('DOMContentLoaded', getTodos)
+  ```
+  
+### 2. CSS
+  
+  #### (1) background-image: linear-gradient
+  gradient 기능을 처음 접해 보았다. linear- gradient는 직선으로 진행하는 색상무늬이고 degree 속성으로 직선의 기울어짐 정도를 표현할 수 있다.
+  
+  ```
+  background-image: linear-gradient(120deg, #f6d365, #b18d83);
+  color: #fff;
+  font-family: 'Nanum Gothic', sans-serif;
+  min-height: 100vh;
+  ```
+  #### (2) transition
+  CSS에서 transition은 애니메이션의 속도를 조절하는 방법을 제공한다. 아래의 코드의 all 은 모든 애니메이션 요소, 0.3s 애니메이션 작동 지속 시간ease 는 타이밍 펑션으로 전환 효과의 시간당 속도를 설정한다.
+  ease는 기본값으로 효과가 천천히 시작되어 그 다음에는 빨라지고 마지막에 다시 느려진다.
+  
+  ```
+  color: #d88771;
+  background:#fff;
+  cursor: pointer;
+  transition: all 0.3s ease; }
+  ```
+  ### (3) transform
+  ```
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0.5;
   ```
