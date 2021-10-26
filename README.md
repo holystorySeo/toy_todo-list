@@ -114,6 +114,7 @@
   font-family: 'Nanum Gothic', sans-serif;
   min-height: 100vh;
   ```
+  
   #### (2) transition
   CSS에서 transition은 애니메이션의 속도를 조절하는 방법을 제공한다. 아래의 코드의 all 은 모든 애니메이션 요소, 0.3s 애니메이션 작동 지속 시간ease 는 타이밍 펑션으로 전환 효과의 시간당 속도를 설정한다.
   ease는 기본값으로 효과가 천천히 시작되어 그 다음에는 빨라지고 마지막에 다시 느려진다.
@@ -124,8 +125,30 @@
   cursor: pointer;
   transition: all 0.3s ease; }
   ```
+  
   ### (3) transform
+  CSS transfor을 사용하면 요소의 회전, 크기조절, 기울기, 이동 효과를 부여할 수 있다. translateY는 브라우저의 Y축을 기준 8rem만큼 요소를 이동한다는 의미다. 
+  rotateZCSS좌표체계가 궁금하다면 https://jobcoding.tistory.com/130. rotateZ는 회전속과를 주는데 degree가 양수면 요소가 시계방향으로 음수는 반시계방향으로 회전하게 된다.
+  
   ```
   transform: translateY(8rem) rotateZ(20deg);
   opacity: 0.5;
   ```
+  
+  ## (4) after:, hoover:after
+  요소의 작동 순서를 지정해 주었다. CSS가 진행될 때 순차적으로 다른 이벤트를 진행할 수 있게 하였다.
+  ```
+  select::after {
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+
+  select:hover::after {
+    background: white;
+    color: #ff6f47;
+  ```
+  
