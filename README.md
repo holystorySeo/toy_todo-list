@@ -126,7 +126,7 @@
   transition: all 0.3s ease; }
   ```
   
-  ### (3) transform
+  #### (3) transform
   CSS transfor을 사용하면 요소의 회전, 크기조절, 기울기, 이동 효과를 부여할 수 있다. translateY는 브라우저의 Y축을 기준 8rem만큼 요소를 이동한다는 의미다. 
   rotateZCSS좌표체계가 궁금하다면 https://jobcoding.tistory.com/130. rotateZ는 회전속과를 주는데 degree가 양수면 요소가 시계방향으로 음수는 반시계방향으로 회전하게 된다.
   
@@ -135,7 +135,7 @@
   opacity: 0.5;
   ```
   
-  ## (4) after:, hoover:after
+  #### (4) after:, hoover:after
   요소의 작동 순서를 지정해 주었다. CSS가 진행될 때 순차적으로 다른 이벤트를 진행할 수 있게 하였다.
   ```
   select::after {
